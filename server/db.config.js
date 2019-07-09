@@ -2,7 +2,7 @@ let Datastore = require('nedb')
     , db = {},
     path = require('path');
 
-db.articles = new Datastore({ filename: path.resolve(__dirname, '../public/assets/data/articles.db'), autoload: true });
+db.articles = new Datastore({ filename: path.resolve(__dirname, '../src/assets/data/articles.db'), autoload: true });
 
 // Load Articles database
 db.articles.loadDatabase(function (err) {

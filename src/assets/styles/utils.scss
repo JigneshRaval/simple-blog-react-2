@@ -1,0 +1,58 @@
+/* Scroll to top functionality
+===================================================*/
+.scroll-top {
+    position: fixed;
+    right: 2%;
+    bottom: 5%;
+    padding: 4px 16px;
+    display: inline-block;
+    color: #000;
+    background: #FFF;
+    border: 1px solid #CCC;
+    z-index: 2600;
+    font-size: 32px;
+    font-weight: bold;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    box-shadow: 0 18px 37px -7px rgba(39, 60, 77, 0.3);
+}
+.scroll-top:hover,
+.scroll-top:active,
+.scroll-top:focus {
+    color: #FFF !important;
+    text-decoration: none !important;
+    background: #222f3e;
+    border-color: #222f3e;
+}
+
+.scroll-top.isVisible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.toast-message__wrapper {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 10px;
+    right: 2%;
+    z-index: 1015;
+    width: 40%;
+}
+.uk-alert {
+    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.3);
+
+    h3 {
+        text-transform: capitalize;
+    }
+}
+.uk-alert-success {
+    border: 1px solid #19a26f;
+}
+.toast-message {
+    position: fixed;
+    top: 100px;
+
+}

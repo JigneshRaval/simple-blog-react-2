@@ -1,11 +1,20 @@
-import React from 'react';
+import React from "react";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      Hello React
-    </div>
-  );
+import ArticleHome from './views/ArticlesHome.page';
+
+class App extends React.Component<any, any> {
+
+    constructor(props: any) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <ArticleHome />
+            </React.Fragment>
+        );
+    }
 }
 
 export default App;

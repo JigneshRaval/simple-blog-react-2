@@ -1,15 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// jQuery and Bootstrap
-import "jquery";
-// import Popper from 'popper.js';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min';
+// UIKit
+// ==========================
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
 
-import './index.scss';
+
+// CSS
+// ==========================
+import './assets/styles/main.scss';
+
+
+// APP COMPONENT
+// ==========================
 import App from './App';
+
+
 import * as serviceWorker from './serviceWorker';
+
+// loads the Icon plugin
+// declare global {
+//     interface Window { UIkit: any; }
+// }
+// window.UIkit = UIkit || {};
+
+(window as any).UIkit = UIkit;
+UIkit.use(Icons);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

@@ -8,11 +8,14 @@ const path = require('path'),
 // console.log('process.env :', process.env, process.env.npm_package_config_myPort);
 
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const fs = require('fs');
 const routes = require('./server/router/index');
 
 // Compress all the assets and server response
 const compression = require('compression');
+
+app.use(cors());
 
 // compress all responses and files
 app.use(compression());

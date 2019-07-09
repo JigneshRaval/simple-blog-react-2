@@ -17,9 +17,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ]
   },
   "include": [
-    "src"
+    "src",
+    "public"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "src/assets/js/*.js"
   ]
 }
