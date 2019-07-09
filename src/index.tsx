@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// jQuery and Bootstrap
+import "jquery";
+// import Popper from 'popper.js';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
