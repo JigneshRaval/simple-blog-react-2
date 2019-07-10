@@ -12,23 +12,25 @@ function articleReducer(state: any, action: any) {
             }
         case "SET_EDIT_MODE":
             // console.log('SET_EDIT_MODE :', state, action);
-            let articleToEdit;
-            state.articles.map((article: any) => {
-                if (article._id === action.articleId) {
-                    articleToEdit = article;
-                }
-            });
+            let articleToEdit = state.articles.filter((article: any) => article._id === action.articleId);
 
             return {
                 ...state,
                 isEditMode: true,
-                editData: articleToEdit
+                editData: articleToEdit[0]
+            }
+        case "SET_ADD_MODE":
+            return {
+                ...state,
+                isEditMode: false,
+                editData: {}
             }
         case "ADD_ARTICLE":
             // console.log('ADD_ARTICLE :', state, action);
             return {
                 ...state,
                 articleCount: action.articles.length,
+                editData: {},
                 isEditMode: false,
                 articles: action.articles,
                 filteredArticles: action.articles,
@@ -56,17 +58,13 @@ function articleReducer(state: any, action: any) {
             };
         case "GET_SINGLE_ARTICLE":
             // console.log('GET_SINGLE_ARTICLE :', state, action);
-            let singleArticle;
-
-            state.articles.map((article: any, index: number) => {
-                if (article._id === action.articleId) {
-                    singleArticle = article;
-                }
+            let singleArticle = state.articles.filter((article: any) => {
+                return article._id === action.articleId;
             });
 
             return {
                 ...state,
-                currentArticle: singleArticle
+                currentArticle: singleArticle[0]
             };
         // return newState;
         case "FILTER_ALL_ARTICLES":

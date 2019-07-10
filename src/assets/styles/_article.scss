@@ -144,7 +144,8 @@
 		font-family: var(--title-font);
 	}
 
-	.article__tags-list a {
+	.article__tags-list a,
+	.article__tags-list button {
 		display: inline-block;
 		padding: 0 8px;
 		border: 2px solid #bb975b;
@@ -155,7 +156,9 @@
 	}
 
 	.article__tags-list a:hover,
-	.article__tags-list a:focus {
+	.article__tags-list a:focus,
+	.article__tags-list button:hover,
+	.article__tags-list button:focus {
 		border: 2px solid #555555;
 		background-color: #CCC;
 	}

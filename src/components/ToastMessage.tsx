@@ -16,9 +16,9 @@ const ToastMessage = (props: any) => {
         }
 
         // componentWillUnmount
-        const cleanUp = () => {
+        /* const cleanUp = () => {
 
-        }
+        } */
     }, [props.displayToastMessage]);
 
     const hideToastMessage = () => {

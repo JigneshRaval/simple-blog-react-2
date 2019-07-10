@@ -48,7 +48,7 @@ const ArticleHome = () => {
         isEditMode: false,
         showForm: false,
         loading: false, // will be true when ajax request is running,
-        toastChildren: [],
+        toastChildren: [] as any,
         isConfirm: false,
         reRender: true,
         tags: {}
@@ -87,6 +87,7 @@ const ArticleHome = () => {
 
                     setState({
                         ...state,
+                        articles: data,
                         tags: getUniqueTags(data)
                     });
                     // console.log('window :', window);
@@ -132,14 +133,14 @@ const ArticleHome = () => {
             isConfirm: isConfirm
         });
 
-        const toastChild = <ToastMessage displayToastMessage={true} toastMessageType={messageType} isConfirm={isConfirm} onConfirm={handleConfirmEvent.bind(this, articleId)} key={articleId + Math.floor((Math.random() * 100) + 1)}>{message}</ToastMessage>;
+        const toastChild = <ToastMessage displayToastMessage={true} toastMessageType={messageType} isConfirm={isConfirm} onConfirm={() => handleConfirmEvent(articleId)} key={articleId + Math.floor((Math.random() * 100) + 1)}>{message}</ToastMessage>;
 
         const newChildren = [...state.toastChildren, toastChild];
 
-        /* setState({
+        setState({
             ...state,
             toastChildren: newChildren
-        }); */
+        });
     }
 
     const handleConfirmEvent = (articleId: string) => {
@@ -203,7 +204,7 @@ const ArticleHome = () => {
     // Update data on the server
     // =========================================
     const handleEditSaveArticle = (articleId: string, formDataObj: any) => {
-        let articles = [...state.articles];
+        let articles: string[] = [...state.articles];
 
         articleService.editArticle(articleId, formDataObj).then((data: any) => {
             articles.map((article: any, index: number) => {
@@ -233,7 +234,7 @@ const ArticleHome = () => {
             })); */
 
             // display message
-            addToastMessage('success', `Article updated successfully... ${data.docs[0].title}`);
+            // addToastMessage('success', `Article updated successfully... ${data.docs[0].title}`);
 
             // Update variable value in articles.service.ts
             updateArticleDataService(newState.articles);
@@ -334,25 +335,22 @@ const ArticleHome = () => {
         }) */
         return uniqeTags;
     }
+    const openForm = () => {
+        UIkit.modal('#modal-example').show();
+        dispatch({ type: 'SET_ADD_MODE' });
+    }
 
-    /* const myfunc = (e: any, articleId: any, index: number, onActivateTabCallback: any) => {
-        // console.log('E :', e.target, articleId, index);
-        handleDisplaySingleArticleContent(articleId);
-        onActivateTabCallback(index);
-        // onActivateTab(index);
-    } */
 
     const { articles, isEditMode, currentArticle, filteredArticles, loading, articleCount } = newState;
 
-    // render() {
     return (
         <main className="wrapper uk-offcanvas-content">
             <div className="container-fluid">
 
                 <section className="content-wrapper">
-                    {/* <div style={{ 'position': 'fixed', zIndex: 1050 }}>{isEditMode.toString()}</div> */}
+                    <div style={{ 'position': 'fixed', zIndex: 1050 }}>{isEditMode.toString()}</div>
 
-                    <Header articles={articles} onFilterArticles={handleFilterArticles} />
+                    <Header articles={articles} onFilterArticles={handleFilterArticles} isEditMode={isEditMode} openForm={openForm} />
 
                     <section className="content-section">
 
@@ -366,7 +364,7 @@ const ArticleHome = () => {
                         <ArticlesList
                             filteredArticles={filteredArticles}
                             loading={state.loading}
-                            onAddToastMessage={addToastMessage.bind(this)}
+                            onAddToastMessage={addToastMessage}
                             onDeleteArticle={handleDeleteArticle}
                             onEditArticle={handleEditArticle}
                             onDisplaySingleArticleContent={handleDisplaySingleArticleContent}
@@ -397,7 +395,6 @@ const ArticleHome = () => {
         </main>
 
     )
-    // }
 }
 
 export default ArticleHome;

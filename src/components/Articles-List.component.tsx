@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ArticleListItem from './Article-List-Item.component';
 import LoadingSpinner from './LoadingSpinner';
 // import TagsInline from './Tags-Inline.component';

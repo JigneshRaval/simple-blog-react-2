@@ -7,13 +7,10 @@ export class ArticleService {
 
     endPoint: string = 'http://localhost:3001'
 
-    constructor() { }
-
     getArticlesData() {
         // this.articles = this.getAllArticles().then(data => data);
         return this.articles;
     }
-
 
     setArticlesData(articles: any) {
         this.articles = articles;
@@ -45,7 +42,7 @@ export class ArticleService {
     public getArticleById(articleId: string) {
         console.log('getArticleById :', articleId);
 
-        return fetch(this.endPoint+ `/api/articles/${articleId}`)
+        return fetch(this.endPoint + `/api/articles/${articleId}`)
             .then((response) => {
                 // If error then exit
                 if (response.status !== 200) {
@@ -66,7 +63,7 @@ export class ArticleService {
     public createArticle(formData: any) {
         console.log('getAllArticles :');
         // Post form data to server
-        return fetch('/api/articles/add', {
+        return fetch(this.endPoint + '/api/articles/add', {
             method: 'POST',
             body: JSON.stringify(formData),
             mode: 'cors',
@@ -91,7 +88,7 @@ export class ArticleService {
 
     public editArticle(articleId: string, formData: any) {
         console.log('editArticle :', articleId);
-        return fetch(`/api/articles/edit/${articleId}`, {
+        return fetch(this.endPoint + `/api/articles/edit/${articleId}`, {
             method: 'POST',
             body: JSON.stringify(formData),
             mode: 'cors',
@@ -104,9 +101,9 @@ export class ArticleService {
             .then((response) => response.json());
     }
 
-    public deleteArticle(articleId: string) {
+    public deleteArticle(articleId: string): any {
         console.log(`deleteArticle - ${articleId}:`);
-        return fetch(`/api/articles/delete/${articleId}`, {
+        return fetch(this.endPoint + `/api/articles/delete/${articleId}`, {
             method: 'DELETE',
             mode: 'cors',
             redirect: 'follow',
@@ -125,7 +122,7 @@ export class ArticleService {
     public markAsFavorite(articleId: string, isFavorite: boolean) {
         let formData = { favorite: !isFavorite };
 
-        return fetch(`/api/articles/favorite/${articleId}`, {
+        return fetch(this.endPoint + `/api/articles/favorite/${articleId}`, {
             method: 'PUT',
             body: JSON.stringify(formData),
             mode: 'cors',

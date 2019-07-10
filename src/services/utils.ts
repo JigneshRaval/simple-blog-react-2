@@ -210,7 +210,6 @@ class Utils {
                 }).map((article: any) => article);
 
                 return [...articleBySearch];
-                break;
 
             // Method 2: filter articles by tags matching with search term
             case 'tag':
@@ -219,7 +218,6 @@ class Utils {
                 });
 
                 return [...articleByTags];
-                break;
 
             // Method 3: filter articles by tags matching with search term
             case 'category':
@@ -228,12 +226,10 @@ class Utils {
                 });
 
                 return [...articlesByCategory];
-                break;
 
             // Method 4: reset all the filters and display all the articles.
             case 'all':
                 return [...articles];
-                break;
 
             // TODO : Remove or update if required
             default:

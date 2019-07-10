@@ -14,9 +14,9 @@ declare var UIkit: any;
 const Header = (props: any) => {
 
     // Open Create Article form in modal overlay
-    const openForm = () => {
+    /* const openForm = () => {
         UIkit.modal('#modal-example').show();
-    }
+    } */
 
     return (
 
@@ -70,7 +70,7 @@ const Header = (props: any) => {
                     </ul>
                     {/* END : Dropdown Navigation */}
 
-                    <button className="uk-button uk-button-secondary" uk-toggle="target: #modal-example" onClick={openForm}>Create Article</button>
+                    <button className="uk-button uk-button-secondary" uk-toggle="target: #modal-example" onClick={props.openForm}>Create Article</button>
                     <a id="toggleSidebar" href="#offcanvas-usage" uk-toggle="" title="Click this button to view list of Categories and Tags." uk-tooltip="Click this button to view list of Categories and Tags."><i className="ion ion-md-menu"></i></a>
                 </div>
             </nav>
